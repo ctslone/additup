@@ -2,10 +2,22 @@ import React, { Component } from 'react';
 import './App.css';
 import Wrapper from './Components/Wrapper';
 import Container from './Components/Container';
+import API from "./Utils/API";
 
 class App extends Component {
   state = {
+    result: []
+  };
 
+  componentDidMount() {
+    // this.doMath(2,2);
+    // console.log(this.state.result)
+  }
+
+
+  doMath = (numA, numB) => {
+    API.calculate(numA, numB)
+    .then(res => console.log(res.status))
   };
 
   render() {
@@ -19,12 +31,13 @@ class App extends Component {
           </div>
 
           <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">2 + 2 = ?</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autoFocus></input>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail1">2 + 2 = ?</label>
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autoFocus></input>
             </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              
           </form>
+          <button onClick={() => this.doMath(2,2)}className="btn btn-primary">Submit</button>
         </Container>
       </Wrapper>
     )
