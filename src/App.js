@@ -6,19 +6,36 @@ import API from "./Utils/API";
 
 class App extends Component {
   state = {
-    result: []
+    numbers: Array,
+    result: Number
   };
 
   componentDidMount() {
-    // this.doMath(2,2);
-    // console.log(this.state.result)
+    this.generateNumbers();
   }
 
+  generateNumbers() {
+    let numbers = [];
+
+    for (let i = 0; i < 2; i++) {
+      numbers.push(Math.floor(Math.random() * 20) + 1)
+    }
+    this.setState({
+      numbers: numbers 
+    })
+    console.log(numbers)
+  }
 
   doMath = (numA, numB) => {
     API.calculate(numA, numB)
-    .then(res => console.log(res.status))
+    .then(res => this.setState({
+      result: res.status
+    }))
   };
+
+  checkAnswer = (userAnswer) => {
+
+  }
 
   render() {
     return(
@@ -32,12 +49,12 @@ class App extends Component {
 
           <form>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">2 + 2 = ?</label>
+                <label htmlFor="exampleInputEmail1">{this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autoFocus></input>
             </div>
               
           </form>
-          <button onClick={() => this.doMath(2,2)}className="btn btn-primary">Submit</button>
+          <button onClick={() => this.doMath(this.state.numbers[0],this.state.numbers[1])}className="btn btn-primary">Submit</button>
         </Container>
       </Wrapper>
     )
