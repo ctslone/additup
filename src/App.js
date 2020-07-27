@@ -12,11 +12,11 @@ class App extends Component {
     userAnswer: "",
     correct: Boolean
   };
-
+  // when component loads, generate the random numbers for addition by the user
   componentDidMount() {
     this.generateNumbers();
   };
-
+  // handling the input change for the answer field and updating the state each change
   handleInputChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -24,21 +24,24 @@ class App extends Component {
       [name]: value
     });
   };
-
+  // generates 2 random numbers between 1 and 20 and adds them to the numbers array and then sets the state.
+  // Once numbers are generated, the doMath method is called
   generateNumbers() {
     let numbers = [];
 
     for (let i = 0; i < 2; i++) {
       numbers.push(Math.floor(Math.random() * 20) + 1)
     }
+
     this.setState({
       numbers: numbers 
     })
-    console.log(numbers)
+
+    // console.log(numbers)
 
     this.doMath(numbers[0], numbers[1])
   }
-
+  // the Math.js API is called using the random numbers to get the correct answer for later comparison
   doMath = (numA, numB) => {
     API.calculate(numA, numB)
     .then(res => this.setState({
@@ -46,7 +49,8 @@ class App extends Component {
       answer: res.data
     }))
   };
-
+  // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
+  // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
     if(input === this.state.answer) {
       console.log("correct")
