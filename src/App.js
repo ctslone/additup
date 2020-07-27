@@ -9,7 +9,8 @@ class App extends Component {
     numbers: Array,
     status: Number,
     answer: Number,
-    userAnswer: ""
+    userAnswer: "",
+    correct: Boolean
   };
 
   componentDidMount() {
@@ -47,12 +48,24 @@ class App extends Component {
   };
 
   checkAnswer = (input) => {
-    if(input == this.state.answer) {
+    if(input === this.state.answer) {
       console.log("correct")
+      this.setState({
+        correct: true
+      })
     }
     else {
       console.log("wrong")
-    }
+      this.setState({
+        correct: false
+      })
+    };
+
+    this.setState({
+      userAnswer: ""
+    });
+    
+    this.generateNumbers()
 
   }
 
@@ -62,7 +75,7 @@ class App extends Component {
         <Container>
           <div className="row text-center">
             <div className="col-12">
-              <h1>App Title</h1>
+              <h1>Addemup!</h1>
             </div>
           </div>
 
@@ -80,7 +93,11 @@ class App extends Component {
                   autoFocus></input>
             </div>
           </form>
-          <button onClick={() => this.checkAnswer(this.state.userAnswer)}className="btn btn-primary">Submit</button>
+          <button 
+            onClick={() => this.checkAnswer(parseInt(this.state.userAnswer))}
+            aria-pressed="false"
+            className="btn btn-primary">Submit</button>
+          <h3>{this.state.correct ? 'Correct!' : 'Incorrect'}</h3>
         </Container>
       </Wrapper>
     )

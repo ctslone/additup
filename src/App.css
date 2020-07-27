@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background-color: green;
+}
