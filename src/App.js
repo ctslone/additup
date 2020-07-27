@@ -79,20 +79,20 @@ class App extends Component {
         <Container>
           <div className="row text-center">
             <div className="col-12">
-              <h1>Addemup!</h1>
+              <h1 id="mainTitle">Addemup!</h1>
             </div>
           </div>
 
           <form>
-            <div className="form-group">
-                <label htmlFor="exampleInputEmail1">{this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
+            <div className="form-group text-center">
+                <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
                 <input 
                   value={this.state.userAnswer} 
                   onChange={this.handleInputChange} 
                   name="userAnswer"
                   type="number" 
                   className="form-control" 
-                  id="exampleInputEmail1" 
+                  id="answerInput" 
                   aria-describedby="emailHelp" 
                   autoFocus></input>
             </div>
