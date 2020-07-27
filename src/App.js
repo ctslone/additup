@@ -7,12 +7,22 @@ import API from "./Utils/API";
 class App extends Component {
   state = {
     numbers: Array,
-    result: Number
+    status: Number,
+    answer: Number,
+    userAnswer: ""
   };
 
   componentDidMount() {
     this.generateNumbers();
-  }
+  };
+
+  handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
 
   generateNumbers() {
     let numbers = [];
@@ -24,16 +34,25 @@ class App extends Component {
       numbers: numbers 
     })
     console.log(numbers)
+
+    this.doMath(numbers[0], numbers[1])
   }
 
   doMath = (numA, numB) => {
     API.calculate(numA, numB)
     .then(res => this.setState({
-      result: res.status
+      status: res.status,
+      answer: res.data
     }))
   };
 
-  checkAnswer = (userAnswer) => {
+  checkAnswer = (input) => {
+    if(input == this.state.answer) {
+      console.log("correct")
+    }
+    else {
+      console.log("wrong")
+    }
 
   }
 
@@ -50,11 +69,18 @@ class App extends Component {
           <form>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">{this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autoFocus></input>
+                <input 
+                  value={this.state.userAnswer} 
+                  onChange={this.handleInputChange} 
+                  name="userAnswer"
+                  type="number" 
+                  className="form-control" 
+                  id="exampleInputEmail1" 
+                  aria-describedby="emailHelp" 
+                  autoFocus></input>
             </div>
-              
           </form>
-          <button onClick={() => this.doMath(this.state.numbers[0],this.state.numbers[1])}className="btn btn-primary">Submit</button>
+          <button onClick={() => this.checkAnswer(this.state.userAnswer)}className="btn btn-primary">Submit</button>
         </Container>
       </Wrapper>
     )
