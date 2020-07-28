@@ -57,6 +57,7 @@ class App extends Component {
       this.setState({
         correct: true
       })
+      this.generateNumbers()
     }
     else {
       console.log("wrong")
@@ -68,8 +69,6 @@ class App extends Component {
     this.setState({
       userAnswer: ""
     });
-
-    this.generateNumbers()
 
   }
 
@@ -83,32 +82,28 @@ class App extends Component {
             </div>
           </div>
 
-          <form>
-            <div className="form-group text-center">
-              <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
-              <input
-                value={this.state.userAnswer}
-                onChange={this.handleInputChange}
-                name="userAnswer"
-                type="number"
-                className="form-control text-center"
-                id="answerInput"
-                aria-describedby="emailHelp"
-                autoFocus>
-              </input>   
+          <div className="row">
+            <div className="col-12">
+              <div className="text-center">
+                <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
+                <input
+                  value={this.state.userAnswer}
+                  onChange={this.handleInputChange}
+                  name="userAnswer"
+                  type="number"
+                  className="form-control text-center"
+                  id="answerInput"
+                  autoFocus>
+                </input>
+                <h3>{this.state.correct ? 'Correct!' : 'Try Again!'}</h3>
+              </div>
             </div>
-          </form>
+          </div>
 
-          <button
-            onClick={() => this.checkAnswer(parseInt(this.state.userAnswer))} className="btn btn-primary">Submit</button>
-
-          
-
-
-
-          {/* <h3>{this.state.correct ? 'Correct!' : 'Incorrect'}</h3> */}
-          <div>
-            <img id="app-logo" src="logo.png"></img>
+          <div className="row">
+            <div className="col-12 text-center">
+              <button onClick={() => this.checkAnswer(parseInt(this.state.userAnswer))} id="submit-ans-btn" className="btn btn-lg">Submit</button>
+            </div>
           </div>
         </Container>
       </Wrapper>

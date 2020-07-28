@@ -45,31 +45,46 @@ body {
   box-shadow: none;
 }
 
+.btn {
+  background-color: #0E1E40;
+  color: white;
+}
+
 .btn:hover {
-  background-color: green;
+  background-color: #68C2E8;
 }
 
 #mainTitle {
   font-family: 'Montserrat Subrayada', sans-serif;
-  font-size: 6em;
+  font-size: 5em;
 }
 
 #equation {
   font-family: 'Comfortaa', cursive;
-  font-size: 5em;
+  font-size: 4em;
 }
 
-/* input[type="number"]
+input[type="number"]
 {
     font-size:5em;
+    background-color: #7f7b8257 !important;
+    border: none;
+    outline: none;
+    color: #68C2E8 !important;
 }
 
 #answerInput {
   height: auto;
+  width: 200px;
   margin: 0 auto;
-} */
+}
 
 #app-logo {
   height: 5rem;
   width: 5rem;
+}
+
+#submit-ans-btn {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
