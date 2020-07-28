@@ -79,6 +79,10 @@ input[type="number"]
   margin: 0 auto;
 }
 
+#answer-status {
+  font-family: 'Comfortaa', cursive;
+}
+
 #app-logo {
   height: 5rem;
   width: 5rem;
