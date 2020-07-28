@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Wrapper from './Components/Wrapper';
 import Container from './Components/Container';
+import Title from './Components/Title'
 import AnswerStatus from './Components/AnswerStatus'
 import API from "./Utils/API";
 
@@ -39,8 +40,6 @@ class App extends Component {
       numbers: numbers
     })
 
-    // console.log(numbers)
-
     this.doMath(numbers[0], numbers[1])
   }
   // the Math.js API is called using the random numbers to get the correct answer for later comparison
@@ -59,14 +58,14 @@ class App extends Component {
     })
 
     if (input === this.state.answer) {
-      console.log("correct")
+      // console.log("correct")
       this.setState({
         correct: true
       })
       this.generateNumbers()
     }
     else {
-      console.log("wrong")
+      // console.log("wrong")
       this.setState({
         correct: false
       })
@@ -78,19 +77,11 @@ class App extends Component {
 
   }
 
-  // startApp = () => {
-
-  // }
-
   render() {
     return (
       <Wrapper>
         <Container>
-          <div className="row text-center">
-            <div className="col-12">
-              <h1 id="mainTitle"><img id="app-logo" alt="owl-log" src="owl.png"></img>Additup!</h1>
-            </div>
-          </div>
+          <Title />
 
           <div className="row">
             <div className="col-12">
@@ -106,6 +97,7 @@ class App extends Component {
                   id="answerInput"
                   autoFocus>
                 </input>
+
                 <div>
                   {this.state.show && <AnswerStatus>{this.state.correct ? 'You got it right! Great Work!' : 'Oops! Try Again!'}</AnswerStatus>}
                 </div>
