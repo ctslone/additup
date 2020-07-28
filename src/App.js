@@ -95,7 +95,7 @@ class App extends Component {
                   id="answerInput"
                   autoFocus>
                 </input>
-                <h3>{this.state.correct ? 'Correct!' : 'Try Again!'}</h3>
+                <h3 id="answer-status">{this.state.correct ? 'Correct!' : 'Try Again!'}</h3>
               </div>
             </div>
           </div>
