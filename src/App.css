@@ -36,6 +36,9 @@
     transform: rotate(360deg);
   }
 } */
+body {
+  background-color: #FFE3E0;
+}
 
 .btn:focus {
   outline: none;
@@ -52,16 +55,21 @@
 }
 
 #equation {
+  font-family: 'Comfortaa', cursive;
   font-size: 5em;
 }
 
-input[type="number"]
+/* input[type="number"]
 {
-    font-size:3em;
+    font-size:5em;
 }
 
 #answerInput {
-  height: 200px;
-  width: 200px;
+  height: auto;
   margin: 0 auto;
+} */
+
+#app-logo {
+  height: 5rem;
+  width: 5rem;
 }

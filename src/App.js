@@ -34,7 +34,7 @@ class App extends Component {
     }
 
     this.setState({
-      numbers: numbers 
+      numbers: numbers
     })
 
     // console.log(numbers)
@@ -44,15 +44,15 @@ class App extends Component {
   // the Math.js API is called using the random numbers to get the correct answer for later comparison
   doMath = (numA, numB) => {
     API.calculate(numA, numB)
-    .then(res => this.setState({
-      status: res.status,
-      answer: res.data
-    }))
+      .then(res => this.setState({
+        status: res.status,
+        answer: res.data
+      }))
   };
   // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
   // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
-    if(input === this.state.answer) {
+    if (input === this.state.answer) {
       console.log("correct")
       this.setState({
         correct: true
@@ -68,40 +68,48 @@ class App extends Component {
     this.setState({
       userAnswer: ""
     });
-    
+
     this.generateNumbers()
 
   }
 
   render() {
-    return(
+    return (
       <Wrapper>
         <Container>
           <div className="row text-center">
             <div className="col-12">
-              <h1 id="mainTitle">Addemup!</h1>
+              <h1 id="mainTitle"><img src="owl.png"></img>Additup!</h1>
             </div>
           </div>
 
           <form>
             <div className="form-group text-center">
-                <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
-                <input 
-                  value={this.state.userAnswer} 
-                  onChange={this.handleInputChange} 
-                  name="userAnswer"
-                  type="number" 
-                  className="form-control" 
-                  id="answerInput" 
-                  aria-describedby="emailHelp" 
-                  autoFocus></input>
+              <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
+              <input
+                value={this.state.userAnswer}
+                onChange={this.handleInputChange}
+                name="userAnswer"
+                type="number"
+                className="form-control text-center"
+                id="answerInput"
+                aria-describedby="emailHelp"
+                autoFocus>
+              </input>   
             </div>
           </form>
-          <button 
-            onClick={() => this.checkAnswer(parseInt(this.state.userAnswer))}
-            aria-pressed="false"
-            className="btn btn-primary">Submit</button>
-          <h3>{this.state.correct ? 'Correct!' : 'Incorrect'}</h3>
+
+          <button
+            onClick={() => this.checkAnswer(parseInt(this.state.userAnswer))} className="btn btn-primary">Submit</button>
+
+          
+
+
+
+          {/* <h3>{this.state.correct ? 'Correct!' : 'Incorrect'}</h3> */}
+          <div>
+            <img id="app-logo" src="logo.png"></img>
+          </div>
         </Container>
       </Wrapper>
     )
