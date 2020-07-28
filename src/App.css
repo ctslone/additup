@@ -81,6 +81,7 @@ input[type="number"]
 
 #answer-status {
   font-family: 'Comfortaa', cursive;
+  margin-top: 1em;
 }
 
 #app-logo {

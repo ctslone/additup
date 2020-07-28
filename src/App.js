@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Wrapper from './Components/Wrapper';
 import Container from './Components/Container';
+import AnswerStatus from './Components/AnswerStatus'
 import API from "./Utils/API";
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
     status: Number,
     answer: Number,
     userAnswer: "",
-    correct: Boolean
+    correct: Boolean,
+    show: false
   };
   // when component loads, generate the random numbers for addition by the user
   componentDidMount() {
@@ -52,6 +54,10 @@ class App extends Component {
   // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
   // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
+    this.setState({
+      show: true
+    })
+
     if (input === this.state.answer) {
       console.log("correct")
       this.setState({
@@ -72,13 +78,17 @@ class App extends Component {
 
   }
 
+  // startApp = () => {
+
+  // }
+
   render() {
     return (
       <Wrapper>
         <Container>
           <div className="row text-center">
             <div className="col-12">
-              <h1 id="mainTitle"><img src="owl.png"></img>Additup!</h1>
+              <h1 id="mainTitle"><img alt="owl-log" src="owl.png"></img>Additup!</h1>
             </div>
           </div>
 
@@ -86,6 +96,7 @@ class App extends Component {
             <div className="col-12">
               <div className="text-center">
                 <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
+                <h5>Enter your answer below</h5>
                 <input
                   value={this.state.userAnswer}
                   onChange={this.handleInputChange}
@@ -95,7 +106,9 @@ class App extends Component {
                   id="answerInput"
                   autoFocus>
                 </input>
-                <h3 id="answer-status">{this.state.correct ? 'Correct!' : 'Try Again!'}</h3>
+                <div>
+                  {this.state.show && <AnswerStatus>{this.state.correct ? 'You got it right! Great Work!' : 'Oops! Try Again!'}</AnswerStatus>}
+                </div>
               </div>
             </div>
           </div>
