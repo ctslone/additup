@@ -30,7 +30,7 @@ class App extends Component {
     let numbers = [];
 
     for (let i = 0; i < 2; i++) {
-      numbers.push(Math.floor(Math.random() * 20) + 1)
+      numbers.push(Math.floor(Math.random() * 10) + 1)
     }
 
     this.setState({
