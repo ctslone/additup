@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Wrapper from './Components/Wrapper';
 import Container from './Components/Container';
+import Title from './Components/Title'
+import AnswerStatus from './Components/AnswerStatus'
 import API from "./Utils/API";
 
 class App extends Component {
@@ -10,7 +12,8 @@ class App extends Component {
     status: Number,
     answer: Number,
     userAnswer: "",
-    correct: Boolean
+    correct: Boolean,
+    show: false
   };
   // when component loads, generate the random numbers for addition by the user
   componentDidMount() {
@@ -30,14 +33,12 @@ class App extends Component {
     let numbers = [];
 
     for (let i = 0; i < 2; i++) {
-      numbers.push(Math.floor(Math.random() * 20) + 1)
+      numbers.push(Math.floor(Math.random() * 10) + 1)
     }
 
     this.setState({
       numbers: numbers
     })
-
-    // console.log(numbers)
 
     this.doMath(numbers[0], numbers[1])
   }
@@ -52,15 +53,19 @@ class App extends Component {
   // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
   // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
+    this.setState({
+      show: true
+    })
+
     if (input === this.state.answer) {
-      console.log("correct")
+      // console.log("correct")
       this.setState({
         correct: true
       })
       this.generateNumbers()
     }
     else {
-      console.log("wrong")
+      // console.log("wrong")
       this.setState({
         correct: false
       })
@@ -76,16 +81,13 @@ class App extends Component {
     return (
       <Wrapper>
         <Container>
-          <div className="row text-center">
-            <div className="col-12">
-              <h1 id="mainTitle"><img src="owl.png"></img>Additup!</h1>
-            </div>
-          </div>
+          <Title />
 
           <div className="row">
             <div className="col-12">
               <div className="text-center">
                 <label id="equation" htmlFor="exampleInputEmail1">What is {this.state.numbers[0]} + {this.state.numbers[1]} = ?</label>
+                <h5>Enter your answer below</h5>
                 <input
                   value={this.state.userAnswer}
                   onChange={this.handleInputChange}
@@ -95,7 +97,10 @@ class App extends Component {
                   id="answerInput"
                   autoFocus>
                 </input>
-                <h3>{this.state.correct ? 'Correct!' : 'Try Again!'}</h3>
+
+                <div>
+                  {this.state.show && <AnswerStatus>{this.state.correct ? 'You got it right! Great Work!' : 'Oops! Try Again!'}</AnswerStatus>}
+                </div>
               </div>
             </div>
           </div>
