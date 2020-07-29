@@ -50,15 +50,15 @@ class App extends Component {
         status: res.status,
         answer: res.data
       }))
-      
+
   };
   // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
   // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
-    if(this.state.status !== 200) {
+    if (this.state.status !== 200) {
       alert("There has been an error. Please try again later.")
     }
-    
+
     this.setState({
       show: true
     })
