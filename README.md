@@ -7,9 +7,16 @@ Additup is a React.js web application developed to be a helpful tool for 2nd gra
 If you would like to run this application locally on a development server on your own machine, please follow the below instructions:
 
 * Using your command line interface, navigate to the root of the directory. In this case, the root is the interview-assignment folder.
+* You will need to have node and npm installed on your machine to proceed further.
 * Once in the root, run `npm install` in the CLI to install all dependencies.
 * When all dependencies have been installed, run `npm start` to start the application locally on the development server.
 * Navigate to http://localhost:3000 to use the application. 
+
+If you would like to build and deploy this application, please follow the below instructions:
+
+* Using your command line interface, navigate to the root of the directory. In this case, the root is the interview-assignment folder.
+* You will need to have node and npm installed on your machine to proceed further.
+
 
 ## Mobile Friendly
 
