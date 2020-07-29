@@ -40,7 +40,8 @@ class App extends Component {
       numbers: numbers
     })
 
-    this.doMath(numbers[0], numbers[1])
+    this.doMath(numbers[0], numbers[1]);
+
   }
   // the Math.js API is called using the random numbers to get the correct answer for later comparison
   doMath = (numA, numB) => {
@@ -49,10 +50,15 @@ class App extends Component {
         status: res.status,
         answer: res.data
       }))
+      
   };
   // Checks the user answer to the correct answer from the Math.js API. Depending on result, state is updated to reflect correct or incorrect
   // Clears the userAnswer state and generates new numbers for the next equation
   checkAnswer = (input) => {
+    if(this.state.status !== 200) {
+      alert("There has been an error. Please try again later.")
+    }
+    
     this.setState({
       show: true
     })
