@@ -2,7 +2,7 @@
   "name": "addition-spa",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://{ctslone}.github.io/{additup}",
+  "homepage": "http://ctslone.github.io/additup",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
