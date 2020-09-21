@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASEURL = "http://api.mathjs.org/v4/?expr=";
+const BASEURL = "https://api.mathjs.org/v4/?expr=";
 
 export default {
   calculate: function(numA, numB) {
